@@ -6,7 +6,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -19,12 +18,16 @@ public class CustomerDAOImpl implements CustomerDAO {
     @Autowired
     SessionFactory sessionFactory;
 
-    @Transactional
     public List<Customer> getCustomers() {
 
         Session currentSession = sessionFactory.getCurrentSession();
 
-        return currentSession.createQuery("from Customer", Customer.class).getResultList();
+        return currentSession.createQuery("from Customer ORDER BY lastName", Customer.class).getResultList();
 
+    }
+
+    public void saveCustomer(Customer customer) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        currentSession.save(customer);
     }
 }
