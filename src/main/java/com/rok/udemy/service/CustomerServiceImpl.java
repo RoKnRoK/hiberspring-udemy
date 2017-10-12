@@ -13,18 +13,21 @@ import java.util.List;
  * All rights reserved =)
  */
 @Service
+@Transactional
 public class CustomerServiceImpl implements CustomerService {
 
 
     @Autowired
     CustomerDAO customerDAO;
 
-    @Transactional
     public List<Customer> getCustomers() {
         return customerDAO.getCustomers();
     }
-    @Transactional
     public void saveCustomer(Customer customer) {
         customerDAO.saveCustomer(customer);
+    }
+
+    public Customer getCustomer(int id) {
+        return customerDAO.getCustomer(id);
     }
 }

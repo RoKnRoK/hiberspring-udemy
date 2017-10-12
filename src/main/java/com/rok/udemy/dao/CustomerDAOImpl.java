@@ -3,6 +3,7 @@ package com.rok.udemy.dao;
 import com.rok.udemy.model.Customer;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -28,6 +29,16 @@ public class CustomerDAOImpl implements CustomerDAO {
 
     public void saveCustomer(Customer customer) {
         Session currentSession = sessionFactory.getCurrentSession();
-        currentSession.save(customer);
+        currentSession.saveOrUpdate(customer);
+    }
+
+    public Customer getCustomer(int id) {
+        Session currentSession = sessionFactory.getCurrentSession();
+
+//        Query<Customer> query = currentSession.createQuery("from Customer Where id=:id", Customer.class);
+//        query.setParameter("id", id);
+//        return query.getSingleResult();
+
+        return currentSession.get(Customer.class, id);
     }
 }
