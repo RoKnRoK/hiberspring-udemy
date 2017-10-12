@@ -39,4 +39,5 @@
     <tx:annotation-driven transaction-manager="transactionManager"/>
     <context:component-scan base-package="com.rok.udemy"/>
     <mvc:annotation-driven/>
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
 </beans>
