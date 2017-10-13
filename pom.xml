@@ -17,6 +17,7 @@
 
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
         <web.xml.path>${basedir}/web/WEB-INF/web.xml</web.xml.path>
+        <aspectj.version>1.8.11</aspectj.version>
     </properties>
 
     <dependencies>
@@ -26,19 +27,6 @@
             <version>${hsqldb.version}</version>
         </dependency>
 
-        <!--<dependency>
-            <groupId>org.apache.openejb</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>6.0-4</version>
-            <scope>provided</scope>
-        </dependency>-->
-
-<!--        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>7.0</version>
-            <scope>provided</scope>
-        </dependency>-->
 
 
         <!-- Spring MVC dependencies -->
@@ -72,6 +60,20 @@
             <version>${spring.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+
+
+
         <!-- Hibernate dependencies -->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -84,20 +86,6 @@
             <artifactId>hibernate-c3p0</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
-
-       <!-- <dependency>
-            <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.0-api</artifactId>
-            <version>1.0.1.Final</version>
-        </dependency>-->
-
-       <!-- <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>persistence-api</artifactId>
-            <version>1.0.2</version>
-        </dependency>-->
-
-
 
         <dependency>
             <groupId>c3p0</groupId>
