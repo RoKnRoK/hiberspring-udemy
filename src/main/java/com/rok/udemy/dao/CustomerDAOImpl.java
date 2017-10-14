@@ -39,7 +39,11 @@ public class CustomerDAOImpl implements CustomerDAO {
 //        query.setParameter("id", id);
 //        return query.getSingleResult();
 
-        return currentSession.get(Customer.class, id);
+        Customer customer = currentSession.get(Customer.class, id);
+        if (customer== null) {
+            throw new IllegalArgumentException("No Customer with id" + id);
+        }
+        return customer;
     }
 
     public void deleteCustomer(int id) {
